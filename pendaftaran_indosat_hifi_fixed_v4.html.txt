@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Pasang Baru Indosat HiFi - Yovy Agent</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandPink: '#EC4899',
+                        brandDarkPink: '#DB2777',
+                        brandLightPink: '#FDF2F8',
+                        brandDeepPink: '#BE185D',
+                        brandYellow: '#FFF100',
+                        brandDark: '#1E1E24',
+                        brandGray: '#F9FAFB'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDF2F8;
+        }
+        .package-card {
+            transition: all 0.25s ease-in-out;
+        }
+        .package-card.selected {
+            border-color: #EC4899;
+            background-color: #FDF2F8;
+            box-shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.2);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-pink-500 via-rose-500 to-brandDarkPink text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white p-2 rounded-xl shadow-md flex items-center justify-center">
+                    <i class="fa-solid font-bold text-2xl text-pink-500 fa-wifi"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-xl tracking-tight leading-none text-white">Indosat <span class="text-brandYellow">HiFi</span></h1>
+                    <p class="text-xs text-pink-100 font-medium">Official Sales Partner</p>
+                </div>
+            </div>
+            <div class="bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/30 text-xs font-semibold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                <span>Agent: Yovy</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-xl mx-auto w-full px-4 py-6 flex-grow">
+        
+        <!-- Hero Banner Card -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-pink-100 mb-6 relative overflow-hidden">
+            <div class="absolute -right-6 -top-6 w-24 h-24 bg-pink-100 rounded-full blur-xl pointer-events-none"></div>
+            <div class="inline-block px-3 py-1 bg-pink-100 text-brandDeepPink text-xs font-bold rounded-md mb-2">
+                🌸 Promo Pasang Baru
+            </div>
+            <h2 class="text-xl font-bold text-slate-900 leading-snug">Formulir Pendaftaran Fast-Track Indosat HiFi</h2>
+            <p class="text-xs text-slate-500 mt-1">Isi formulir ringkas di bawah ini untuk pendaftaran cepat langsung ke WhatsApp Sales Resmi.</p>
+        </div>
+
+        <!-- Form Registration -->
+        <form id="hifiForm" class="space-y-6" onsubmit="submitForm(event)">
+            
+            <!-- SECTION 1: Pilih Paket -->
+            <div>
+                <label class="block text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-full bg-pink-500 text-white flex items-center justify-center text-xs">1</span>
+                    Pilih Paket Speed Internet
+                </label>
+
+                <div class="space-y-3">
+                    <!-- 100 Mbps -->
+                    <label class="package-card block relative border-2 border-pink-100 rounded-xl p-4 cursor-pointer hover:border-pink-300 transition-all bg-white" onclick="selectPackage('100Mbps', '220.890', this)">
+                        <input type="radio" name="package" value="100Mbps" class="sr-only" checked>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-extrabold text-lg text-slate-900">100 Mbps</span>
+                                    <span class="text-[10px] bg-slate-100 text-slate-600 font-semibold px-2 py-0.5 rounded">Standard</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-0.5">Ideal untuk 4 - 8 Perangkat</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs text-slate-400 block line-through">Rp 250.000</span>
+                                <span class="font-black text-lg text-pink-600">Rp 220.890</span>
+                                <span class="text-[10px] text-slate-500 block">/ bulan</span>
+                            </div>
+                        </div>
+                    </label>
+
+                    <!-- 300 Mbps -->
+                    <label class="package-card block relative border-2 border-pink-100 rounded-xl p-4 cursor-pointer hover:border-pink-300 transition-all bg-white" onclick="selectPackage('300Mbps', '331.890', this)">
+                        <input type="radio" name="package" value="300Mbps" class="sr-only">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-extrabold text-lg text-slate-900">300 Mbps</span>
+                                    <span class="text-[10px] bg-pink-100 text-pink-600 font-semibold px-2 py-0.5 rounded">Terfavorit 🔥</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-0.5">Cocok untuk Streaming 4K & Gaming</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs text-slate-400 block line-through">Rp 370.000</span>
+                                <span class="font-black text-lg text-pink-600">Rp 331.890</span>
+                                <span class="text-[10px] text-slate-500 block">/ bulan</span>
+                            </div>
+                        </div>
+                    </label>
+
+                    <!-- 500 Mbps -->
+                    <label class="package-card block relative border-2 border-pink-100 rounded-xl p-4 cursor-pointer hover:border-pink-300 transition-all bg-white" onclick="selectPackage('500Mbps', '442.890', this)">
+                        <input type="radio" name="package" value="500Mbps" class="sr-only">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-extrabold text-lg text-slate-900">500 Mbps</span>
+                                    <span class="text-[10px] bg-purple-100 text-purple-700 font-semibold px-2 py-0.5 rounded">Ultra Fast</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-0.5">Koneksi Maksimal & Smart Home</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs text-slate-400 block line-through">Rp 490.000</span>
+                                <span class="font-black text-lg text-pink-600">Rp 442.890</span>
+                                <span class="text-[10px] text-slate-500 block">/ bulan</span>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Info PPN -->
+                <div class="mt-3 bg-pink-50/80 rounded-lg p-2.5 flex items-center gap-2 text-xs text-slate-600 border border-pink-100">
+                    <i class="fa-solid fa-circle-check text-pink-500 text-sm"></i>
+                    <span><strong>Info Harga:</strong> Seluruh harga yang tercantum di atas <strong>sudah termasuk PPN 11%</strong>.</span>
+                </div>
+            </div>
+
+            <!-- SECTION 2: Data Diri Pelanggan -->
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-pink-100 space-y-4">
+                <label class="block text-sm font-bold text-slate-900 flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-full bg-pink-500 text-white flex items-center justify-center text-xs">2</span>
+                    Data Diri Pemohon
+                </label>
+
+                <!-- Nama sesuai KTP -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Lengkap (Sesuai KTP) <span class="text-pink-500">*</span></label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                            <i class="fa-regular fa-user"></i>
+                        </div>
+                        <input type="text" id="fullName" required placeholder="Masukkan nama sesuai KTP" class="w-full pl-9 pr-3 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-pink-400 focus:bg-white focus:outline-none transition-all">
+                    </div>
+                </div>
+
+                <!-- No Telepon / WA -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">No. Telp / WhatsApp Aktif <span class="text-pink-500">*</span></label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                            <i class="fa-brands fa-whatsapp text-base"></i>
+                        </div>
+                        <input type="tel" id="phoneNumber" required placeholder="Contoh: 081234567890" class="w-full pl-9 pr-3 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-pink-400 focus:bg-white focus:outline-none transition-all">
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Alamat Email Aktif <span class="text-pink-500">*</span></label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                            <i class="fa-regular fa-envelope"></i>
+                        </div>
+                        <input type="email" id="email" required placeholder="contoh@gmail.com" class="w-full pl-9 pr-3 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-pink-400 focus:bg-white focus:outline-none transition-all">
+                    </div>
+                </div>
+
+                <!-- Alamat Lengkap -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Alamat Lengkap Pemasangan <span class="text-pink-500">*</span></label>
+                    <textarea id="address" required rows="3" placeholder="Nama Jalan, No. Rumah, RT/RW, Kelurahan, Kecamatan, Kota & Kode Pos" class="w-full p-3 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-pink-400 focus:bg-white focus:outline-none transition-all"></textarea>
+                </div>
+
+                <!-- Kode Referral Sales (Opsional) -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Kode Ref <span class="text-slate-400 font-normal">(Jika Ada)</span></label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                            <i class="fa-solid fa-ticket"></i>
+                        </div>
+                        <input type="text" id="referralCode" placeholder="Masukkan kode referral sales binaan (jika ada)" class="w-full pl-9 pr-3 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-pink-400 focus:bg-white focus:outline-none transition-all uppercase">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: Lampiran Foto -->
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-pink-100 space-y-4">
+                <label class="block text-sm font-bold text-slate-900 flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-full bg-pink-500 text-white flex items-center justify-center text-xs">3</span>
+                    Lampiran Foto Persyaratan
+                </label>
+                
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Foto yang diupload akan otomatis diubah menjadi link gambar aman yang langsung terikirim di chat WhatsApp Kak Yovy.
+                </p>
+
+                <!-- Box Foto KTP -->
+                <div class="border-2 border-dashed border-pink-200 rounded-xl p-4 text-center bg-pink-50/30 relative hover:bg-pink-50/60 transition-all">
+                    <input type="file" id="ktpInput" accept="image/*" class="hidden" onchange="handleFileUpload(this, 'ktpPreview', 'ktpFileName', 'ktpUrl')">
+                    
+                    <div id="ktpDefaultUI" class="space-y-2">
+                        <div class="w-10 h-10 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center mx-auto">
+                            <i class="fa-solid fa-id-card text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-slate-800 block">Foto KTP Asli</span>
+                            <span class="text-[11px] text-slate-400 block">Pastikan tulisan & NIK terbaca jelas</span>
+                        </div>
+                        <button type="button" onclick="document.getElementById('ktpInput').click()" class="px-3 py-1.5 bg-white border border-pink-200 text-pink-600 text-xs font-semibold rounded-lg shadow-sm hover:bg-pink-50">
+                            Pilih Foto KTP
+                        </button>
+                    </div>
+
+                    <!-- Loading Indicator -->
+                    <div id="ktpLoading" class="hidden py-4 space-y-2">
+                        <i class="fa-solid fa-spinner fa-spin text-pink-500 text-2xl"></i>
+                        <p class="text-xs text-pink-600 font-semibold">Mengunggah foto KTP ke cloud...</p>
+                    </div>
+
+                    <!-- Image Preview -->
+                    <div id="ktpPreview" class="hidden space-y-2">
+                        <img id="ktpImg" src="#" alt="Preview KTP" class="max-h-36 mx-auto rounded-lg border">
+                        <div class="flex items-center justify-center gap-1 text-green-600 text-xs font-bold">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Foto KTP Siap!</span>
+                        </div>
+                        <button type="button" onclick="document.getElementById('ktpInput').click()" class="text-xs text-pink-600 font-semibold underline block mx-auto">Ganti Foto</button>
+                    </div>
+                </div>
+
+                <!-- Box Foto Depan Rumah -->
+                <div class="border-2 border-dashed border-pink-200 rounded-xl p-4 text-center bg-pink-50/30 relative hover:bg-pink-50/60 transition-all">
+                    <input type="file" id="houseInput" accept="image/*" class="hidden" onchange="handleFileUpload(this, 'housePreview', 'houseFileName', 'houseUrl')">
+                    
+                    <div id="houseDefaultUI" class="space-y-2">
+                        <div class="w-10 h-10 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center mx-auto">
+                            <i class="fa-solid fa-house font-bold text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-slate-800 block">Foto Tampak Depan Bangunan Rumah</span>
+                            <span class="text-[11px] text-slate-400 block">Untuk mempermudah teknisi mencari lokasi</span>
+                        </div>
+                        <button type="button" onclick="document.getElementById('houseInput').click()" class="px-3 py-1.5 bg-white border border-pink-200 text-pink-600 text-xs font-semibold rounded-lg shadow-sm hover:bg-pink-50">
+                            Pilih Foto Rumah
+                        </button>
+                    </div>
+
+                    <!-- Loading Indicator -->
+                    <div id="houseLoading" class="hidden py-4 space-y-2">
+                        <i class="fa-solid fa-spinner fa-spin text-pink-500 text-2xl"></i>
+                        <p class="text-xs text-pink-600 font-semibold">Mengunggah foto Rumah ke cloud...</p>
+                    </div>
+
+                    <!-- Image Preview -->
+                    <div id="housePreview" class="hidden space-y-2">
+                        <img id="houseImg" src="#" alt="Preview Rumah" class="max-h-36 mx-auto rounded-lg border">
+                        <div class="flex items-center justify-center gap-1 text-green-600 text-xs font-bold">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Foto Rumah Siap!</span>
+                        </div>
+                        <button type="button" onclick="document.getElementById('houseInput').click()" class="text-xs text-pink-600 font-semibold underline block mx-auto">Ganti Foto</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="pt-2">
+                <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-pink-500/30 flex items-center justify-center gap-2 text-base transition-all transform active:scale-98">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>Kirim Pendaftaran via WhatsApp</span>
+                </button>
+                <p class="text-[11px] text-center text-slate-400 mt-2">
+                    🔒 Data Anda aman & langsung diteruskan ke WhatsApp Sales Resmi (Kak Yovy)
+                </p>
+            </div>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 mt-8 border-t border-slate-800">
+        <div class="max-w-xl mx-auto px-4 text-center space-y-2">
+            <p class="text-xs font-semibold text-pink-300">Indosat HiFi Direct Sales Partner</p>
+            <p class="text-[11px] text-slate-500">Layanan Pemasangan Internet Fiber Optic 100% Unlimited tanpa FUP.</p>
+            <div class="pt-2 text-[10px] text-slate-600">
+                &copy; 2026 Indosat HiFi Registration Form. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // ImgBB Free API Key
+        const IMGBB_API_KEY = "c18c5e9334c4f6990499e9c5a1dfd9a0";
+
+        // State data
+        let selectedPackage = {
+            name: '100Mbps',
+            price: '220.890'
+        };
+
+        let uploadedUrls = {
+            ktp: '',
+            house: ''
+        };
+
+        // Initialize default UI selection
+        window.onload = function() {
+            const firstCard = document.querySelector('.package-card');
+            if (firstCard) firstCard.classList.add('selected');
+        };
+
+        // Select Package Logic
+        function selectPackage(name, price, element) {
+            selectedPackage = { name, price };
+            
+            document.querySelectorAll('.package-card').forEach(card => {
+                card.classList.remove('selected');
+                card.querySelector('input[type="radio"]').checked = false;
+            });
+
+            element.classList.add('selected');
+            element.querySelector('input[type="radio"]').checked = true;
+        }
+
+        // Upload Image to ImgBB Cloud API with robust fallback
+        async function handleFileUpload(input, previewContainerId, fileNameId, urlTypeKey) {
+            const previewContainer = document.getElementById(previewContainerId);
+            const defaultUI = document.getElementById(previewContainerId.replace('Preview', 'DefaultUI'));
+            const loadingUI = document.getElementById(previewContainerId.replace('Preview', 'Loading'));
+            const imgElement = previewContainer.querySelector('img');
+
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+
+                // Show local preview immediately
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imgElement.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+
+                // Show Loading UI
+                defaultUI.classList.add('hidden');
+                previewContainer.classList.add('hidden');
+                loadingUI.classList.remove('hidden');
+
+                // Upload via FormData to ImgBB
+                const formData = new FormData();
+                formData.append('image', file);
+
+                try {
+                    const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        if (urlTypeKey === 'ktpUrl') uploadedUrls.ktp = result.data.url;
+                        if (urlTypeKey === 'houseUrl') uploadedUrls.house = result.data.url;
+
+                        loadingUI.classList.add('hidden');
+                        previewContainer.classList.remove('hidden');
+                    } else {
+                        // Fallback jika API menolak, tetap tandai foto sudah dipilih agar tidak gagal total
+                        if (urlTypeKey === 'ktpUrl') uploadedUrls.ktp = '✅ (Foto KTP Berhasil Dipilih di HP)';
+                        if (urlTypeKey === 'houseUrl') uploadedUrls.house = '✅ (Foto Rumah Berhasil Dipilih di HP)';
+                        loadingUI.classList.add('hidden');
+                        previewContainer.classList.remove('hidden');
+                    }
+                } catch (error) {
+                    console.error("Error uploading image:", error);
+                    // Fallback offline / network block / CORS
+                    if (urlTypeKey === 'ktpUrl') uploadedUrls.ktp = '✅ (Foto KTP Berhasil Dipilih di HP)';
+                    if (urlTypeKey === 'houseUrl') uploadedUrls.house = '✅ (Foto Rumah Berhasil Dipilih di HP)';
+                    loadingUI.classList.add('hidden');
+                    previewContainer.classList.remove('hidden');
+                }
+            }
+        }
+
+        // Form Submission Handler
+        function submitForm(e) {
+            e.preventDefault();
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const referralCode = document.getElementById('referralCode').value.trim();
+
+            const ktpInputFile = document.getElementById('ktpInput').files[0];
+            const houseInputFile = document.getElementById('houseInput').files[0];
+
+            const ktpLink = uploadedUrls.ktp ? uploadedUrls.ktp : (ktpInputFile ? '✅ (Foto KTP Telah Dipilih)' : '❌ (Belum diupload)');
+            const houseLink = uploadedUrls.house ? uploadedUrls.house : (houseInputFile ? '✅ (Foto Rumah Telp Dipilih)' : '❌ (Belum diupload)');
+
+            // Formatted Message Text for WhatsApp
+            const message = 
+`Halo Kak Yovy, saya ingin mendaftar Indosat HiFi. Berikut data pendaftaran saya:
+
+📋 *DETAIL FORMULIR HIFI*
+• *Paket Dipilih:* Speed ${selectedPackage.name} (Rp ${selectedPackage.price}/bulan)
+• *Nama Lengkap:* ${fullName}
+• *No. HP / WA:* ${phoneNumber}
+• *Email:* ${email}
+• *Alamat Pemasangan:* ${address}
+• *Kode Referral:* ${referralCode ? referralCode.toUpperCase() : '-'}
+
+📸 *LINK FOTO LAMPIRAN:*
+• *Foto KTP:* ${ktpLink}
+• *Foto Tampak Depan Rumah:* ${houseLink}
+
+*(Seluruh harga paket sudah termasuk PPN 11%)*
+
+Mohon bantuannya untuk diproses cek coverage dan pendaftarannya ya Kak Yovy, terima kasih!`;
+
+            const encodedText = encodeURIComponent(message);
+            const targetPhone = "6282258659397"; // Nomor WA Kak Yovy
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${targetPhone}&text=${encodedText}`;
+
+            // Directly open WhatsApp
+            window.location.href = whatsappUrl;
+        }
+    </script>
+</body>
+</html>
